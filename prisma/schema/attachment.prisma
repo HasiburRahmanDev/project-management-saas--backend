@@ -1,0 +1,6 @@
+model Attachment {
+  id     String @id @default(uuid())
+  url    String
+  taskId String
+  task   Task   @relation(fields: [taskId], references: [id])
+}

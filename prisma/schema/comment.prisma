@@ -1,0 +1,8 @@
+model Comment {
+  id      String @id @default(uuid())
+  content String
+  taskId  String
+  task    Task   @relation(fields: [taskId], references: [id])
+  userId  String
+  user    User   @relation(fields: [userId], references: [id])
+}

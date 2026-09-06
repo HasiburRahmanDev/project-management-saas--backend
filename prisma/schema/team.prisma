@@ -1,0 +1,8 @@
+model Team {
+  id             String       @id @default(uuid())
+  name           String
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  members        User[]       @relation("TeamMembers")
+  projects       Project[]
+}
