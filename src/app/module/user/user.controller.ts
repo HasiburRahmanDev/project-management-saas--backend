@@ -6,12 +6,20 @@ import httpStatus from "http-status";
 
 const uploadProfileImage = catchAsync(async (req: Request, res: Response) => {
   console.log("Request.file", req.file);
+  const userId = req.user?.userId;
+  if (!req.file) {
+    throw new Error("No file provided");
+  }
+  const result = await userServices.uploadProfileImage(
+    req.file?.buffer,
+    userId as string,
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
     success: true,
-    message: "User registered successfully",
-    data: {},
+    message: "image uploaded successfully",
+    data: { result },
   });
 });
 
