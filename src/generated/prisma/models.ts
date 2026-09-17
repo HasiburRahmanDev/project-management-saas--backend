@@ -10,8 +10,10 @@
  */
 export type * from './models/Activity'
 export type * from './models/Attachment'
+export type * from './models/Booking'
 export type * from './models/Comment'
 export type * from './models/Organization'
+export type * from './models/Payment'
 export type * from './models/Project'
 export type * from './models/Sprint'
 export type * from './models/Task'

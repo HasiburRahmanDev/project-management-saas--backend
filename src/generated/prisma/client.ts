@@ -52,6 +52,11 @@ export type Activity = Prisma.ActivityModel
  */
 export type Attachment = Prisma.AttachmentModel
 /**
+ * Model Booking
+ * 
+ */
+export type Booking = Prisma.BookingModel
+/**
  * Model Comment
  * 
  */
@@ -61,6 +66,11 @@ export type Comment = Prisma.CommentModel
  * 
  */
 export type Organization = Prisma.OrganizationModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
 /**
  * Model Project
  * 
