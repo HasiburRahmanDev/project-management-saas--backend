@@ -62,6 +62,72 @@ const booking = async (payload: any, user: RequestUser) => {
   return transactionResult;
 };
 
+const payBooking = async (payload: any, user: RequestUser) => {
+  const bookingId = payload.bookingId;
+
+  const existingBooking = await prisma.booking.findUnique({
+    where: {
+      id: bookingId,
+    },
+  });
+  if (!existingBooking) {
+    throw new Error("Booking does not exist");
+  }
+  if (existingBooking.status !== "PENDING") {
+    throw new Error("Booking is not pending!");
+  }
+  // if (
+  //   existingBooking.status === "CANCELLED" ||
+  //   existingBooking.status === "IN_PROGRESS" ||
+  //   existingBooking.status === "COMPLETED"
+  // ) {
+  //   throw new Error(`appointment is already ${existingBooking.status}`);
+  // }
+
+  const bkashIdToken = await getBkashIdToken();
+
+  if (!bkashIdToken) {
+    throw new Error("bkash access token not found");
+  }
+  console.log({ bkashIdToken });
+  const bkashCreatePaymentResponse = await fetch(
+    `${config.bkash_base_url}/tokenized/checkout/create`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: bkashIdToken,
+        "X-App-Key": config.bkash_app_key,
+      },
+      body: JSON.stringify({
+        mode: "0011",
+        payerReference: user.email,
+        callbackURL: `${config.bkash_callback_url}/api/v1/booking/project-booking/payment/callback`,
+        amount: "1200",
+        currency: "BDT",
+        intent: "sale",
+        merchantInvoiceNumber: existingBooking.id,
+      }),
+    },
+  );
+  const bkashCreatePaymentResult = await bkashCreatePaymentResponse.json();
+
+  await prisma.payment.update({
+    where: {
+      bookingId: existingBooking.id,
+    },
+    data: {
+      merchantInvoiceNumber: bkashCreatePaymentResult.merchantInvoiceNumber,
+      gatewayResponse: bkashCreatePaymentResult,
+      bkashPaymentId: bkashCreatePaymentResult.paymentID,
+    },
+  });
+  return {
+    paymentUrl: bkashCreatePaymentResult.bkashURL,
+  };
+};
+
 const bookingCallback = async (query: Record<string, any>) => {
   const transactionResult = await prisma.$transaction(async (tx) => {
     const paymentId = query.paymentID;
