@@ -1,6 +1,11 @@
 model Attachment {
-  id     String @id @default(uuid())
-  url    String
-  taskId String
-  task   Task   @relation(fields: [taskId], references: [id])
+  id           String   @id @default(uuid())
+  url          String
+  publicId     String   @default("")
+  fileName     String   @default("")
+  taskId       String
+  task         Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  uploadedById String?
+  uploadedBy   User?    @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  createdAt    DateTime @default(now())
 }

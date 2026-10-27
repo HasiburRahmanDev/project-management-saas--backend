@@ -153,12 +153,6 @@ const resetPassword = catchAsync(async (req: Request, res: Response) => {
   const payload = req.body;
   await AuthService.resetPassword(payload);
 
-  res.cookie("refreshToken", refreshToken, {
-    httpOnly: true,
-    secure: false,
-    sameSite: "none",
-    maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-  });
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

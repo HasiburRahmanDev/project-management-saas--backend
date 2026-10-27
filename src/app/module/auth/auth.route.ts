@@ -9,7 +9,7 @@ const router = Router();
 
 router.post(
   "/register",
-  validateRequest(userValidation.PatientRegistrationZodSchema),
+  validateRequest(userValidation.RegistrationZodSchema),
   AuthController.registerUser,
 );
 router.post(
@@ -23,8 +23,20 @@ router.get(
   AuthController.getMe,
 );
 router.post("/refresh-token", AuthController.refreshToken);
-router.post("/google", AuthController.googleLogin);
-router.post("/forgot-password", AuthController.forgotPassword);
-router.post("/reset-password", AuthController.resetPassword);
+router.post(
+  "/google",
+  validateRequest(userValidation.GoogleLoginZodSchema),
+  AuthController.googleLogin,
+);
+router.post(
+  "/forgot-password",
+  validateRequest(userValidation.ForgotPasswordZodSchema),
+  AuthController.forgotPassword,
+);
+router.post(
+  "/reset-password",
+  validateRequest(userValidation.ResetPasswordZodSchema),
+  AuthController.resetPassword,
+);
 
 export const AuthRoutes = router;

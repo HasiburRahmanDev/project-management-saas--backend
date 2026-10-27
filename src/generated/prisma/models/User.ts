@@ -270,10 +270,14 @@ export type UserWhereInput = {
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  teams?: Prisma.TeamListRelationFilter
+  teamMemberships?: Prisma.TeamMemberListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   activities?: Prisma.ActivityListRelationFilter
   organizations?: Prisma.OrganizationListRelationFilter
+  assignedTasks?: Prisma.TaskListRelationFilter
+  reportedTasks?: Prisma.TaskListRelationFilter
+  attachments?: Prisma.AttachmentListRelationFilter
+  bookings?: Prisma.BookingListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -293,10 +297,14 @@ export type UserOrderByWithRelationInput = {
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  teams?: Prisma.TeamOrderByRelationAggregateInput
+  teamMemberships?: Prisma.TeamMemberOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   activities?: Prisma.ActivityOrderByRelationAggregateInput
   organizations?: Prisma.OrganizationOrderByRelationAggregateInput
+  assignedTasks?: Prisma.TaskOrderByRelationAggregateInput
+  reportedTasks?: Prisma.TaskOrderByRelationAggregateInput
+  attachments?: Prisma.AttachmentOrderByRelationAggregateInput
+  bookings?: Prisma.BookingOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -319,10 +327,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  teams?: Prisma.TeamListRelationFilter
+  teamMemberships?: Prisma.TeamMemberListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   activities?: Prisma.ActivityListRelationFilter
   organizations?: Prisma.OrganizationListRelationFilter
+  assignedTasks?: Prisma.TaskListRelationFilter
+  reportedTasks?: Prisma.TaskListRelationFilter
+  attachments?: Prisma.AttachmentListRelationFilter
+  bookings?: Prisma.BookingListRelationFilter
 }, "id" | "googleId" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -386,10 +398,14 @@ export type UserCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -409,10 +425,14 @@ export type UserUncheckedCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamUncheckedCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -432,10 +452,14 @@ export type UserUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -455,10 +479,14 @@ export type UserUncheckedUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUncheckedUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -526,16 +554,6 @@ export type UserNullableScalarRelationFilter = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
-}
-
-export type UserListRelationFilter = {
-  every?: Prisma.UserWhereInput
-  some?: Prisma.UserWhereInput
-  none?: Prisma.UserWhereInput
-}
-
-export type UserOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -611,6 +629,38 @@ export type UserUpdateOneWithoutActivitiesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivitiesInput, Prisma.UserUpdateWithoutActivitiesInput>, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
 }
 
+export type UserCreateNestedOneWithoutAttachmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAttachmentsInput, Prisma.UserUncheckedCreateWithoutAttachmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAttachmentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutAttachmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAttachmentsInput, Prisma.UserUncheckedCreateWithoutAttachmentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAttachmentsInput
+  upsert?: Prisma.UserUpsertWithoutAttachmentsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAttachmentsInput, Prisma.UserUpdateWithoutAttachmentsInput>, Prisma.UserUncheckedUpdateWithoutAttachmentsInput>
+}
+
+export type UserCreateNestedOneWithoutBookingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBookingsInput, Prisma.UserUncheckedCreateWithoutBookingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBookingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutBookingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBookingsInput, Prisma.UserUncheckedCreateWithoutBookingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBookingsInput
+  upsert?: Prisma.UserUpsertWithoutBookingsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBookingsInput, Prisma.UserUpdateWithoutBookingsInput>, Prisma.UserUncheckedUpdateWithoutBookingsInput>
+}
+
 export type UserCreateNestedOneWithoutCommentsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCommentsInput, Prisma.UserUncheckedCreateWithoutCommentsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommentsInput
@@ -639,42 +689,50 @@ export type UserUpdateOneRequiredWithoutOrganizationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOrganizationsInput, Prisma.UserUpdateWithoutOrganizationsInput>, Prisma.UserUncheckedUpdateWithoutOrganizationsInput>
 }
 
-export type UserCreateNestedManyWithoutTeamsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamsInput, Prisma.UserUncheckedCreateWithoutTeamsInput> | Prisma.UserCreateWithoutTeamsInput[] | Prisma.UserUncheckedCreateWithoutTeamsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamsInput | Prisma.UserCreateOrConnectWithoutTeamsInput[]
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+export type UserCreateNestedOneWithoutAssignedTasksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssignedTasksInput, Prisma.UserUncheckedCreateWithoutAssignedTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssignedTasksInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUncheckedCreateNestedManyWithoutTeamsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamsInput, Prisma.UserUncheckedCreateWithoutTeamsInput> | Prisma.UserCreateWithoutTeamsInput[] | Prisma.UserUncheckedCreateWithoutTeamsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamsInput | Prisma.UserCreateOrConnectWithoutTeamsInput[]
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+export type UserCreateNestedOneWithoutReportedTasksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportedTasksInput, Prisma.UserUncheckedCreateWithoutReportedTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportedTasksInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateManyWithoutTeamsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamsInput, Prisma.UserUncheckedCreateWithoutTeamsInput> | Prisma.UserCreateWithoutTeamsInput[] | Prisma.UserUncheckedCreateWithoutTeamsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamsInput | Prisma.UserCreateOrConnectWithoutTeamsInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutTeamsInput | Prisma.UserUpsertWithWhereUniqueWithoutTeamsInput[]
-  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutTeamsInput | Prisma.UserUpdateWithWhereUniqueWithoutTeamsInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutTeamsInput | Prisma.UserUpdateManyWithWhereWithoutTeamsInput[]
-  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+export type UserUpdateOneWithoutAssignedTasksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAssignedTasksInput, Prisma.UserUncheckedCreateWithoutAssignedTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAssignedTasksInput
+  upsert?: Prisma.UserUpsertWithoutAssignedTasksInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAssignedTasksInput, Prisma.UserUpdateWithoutAssignedTasksInput>, Prisma.UserUncheckedUpdateWithoutAssignedTasksInput>
 }
 
-export type UserUncheckedUpdateManyWithoutTeamsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamsInput, Prisma.UserUncheckedCreateWithoutTeamsInput> | Prisma.UserCreateWithoutTeamsInput[] | Prisma.UserUncheckedCreateWithoutTeamsInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamsInput | Prisma.UserCreateOrConnectWithoutTeamsInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutTeamsInput | Prisma.UserUpsertWithWhereUniqueWithoutTeamsInput[]
-  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutTeamsInput | Prisma.UserUpdateWithWhereUniqueWithoutTeamsInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutTeamsInput | Prisma.UserUpdateManyWithWhereWithoutTeamsInput[]
-  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+export type UserUpdateOneWithoutReportedTasksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReportedTasksInput, Prisma.UserUncheckedCreateWithoutReportedTasksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportedTasksInput
+  upsert?: Prisma.UserUpsertWithoutReportedTasksInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReportedTasksInput, Prisma.UserUpdateWithoutReportedTasksInput>, Prisma.UserUncheckedUpdateWithoutReportedTasksInput>
+}
+
+export type UserCreateNestedOneWithoutTeamMembershipsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamMembershipsInput, Prisma.UserUncheckedCreateWithoutTeamMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutTeamMembershipsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTeamMembershipsInput, Prisma.UserUncheckedCreateWithoutTeamMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTeamMembershipsInput
+  upsert?: Prisma.UserUpsertWithoutTeamMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTeamMembershipsInput, Prisma.UserUpdateWithoutTeamMembershipsInput>, Prisma.UserUncheckedUpdateWithoutTeamMembershipsInput>
 }
 
 export type EnumAuthProviderFieldUpdateOperationsInput = {
@@ -691,10 +749,6 @@ export type EnumRoleFieldUpdateOperationsInput = {
 
 export type EnumUserStatusFieldUpdateOperationsInput = {
   set?: $Enums.UserStatus
-}
-
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
 }
 
 export type UserCreateWithoutActivitiesInput = {
@@ -714,9 +768,13 @@ export type UserCreateWithoutActivitiesInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutActivitiesInput = {
@@ -736,9 +794,13 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamUncheckedCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutActivitiesInput = {
@@ -774,9 +836,13 @@ export type UserUpdateWithoutActivitiesInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivitiesInput = {
@@ -796,9 +862,253 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUncheckedUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAttachmentsInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAttachmentsInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAttachmentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAttachmentsInput, Prisma.UserUncheckedCreateWithoutAttachmentsInput>
+}
+
+export type UserUpsertWithoutAttachmentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAttachmentsInput, Prisma.UserUncheckedUpdateWithoutAttachmentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAttachmentsInput, Prisma.UserUncheckedCreateWithoutAttachmentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAttachmentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAttachmentsInput, Prisma.UserUncheckedUpdateWithoutAttachmentsInput>
+}
+
+export type UserUpdateWithoutAttachmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAttachmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutBookingsInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+}
+
+export type UserUncheckedCreateWithoutBookingsInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+}
+
+export type UserCreateOrConnectWithoutBookingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBookingsInput, Prisma.UserUncheckedCreateWithoutBookingsInput>
+}
+
+export type UserUpsertWithoutBookingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBookingsInput, Prisma.UserUncheckedUpdateWithoutBookingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBookingsInput, Prisma.UserUncheckedCreateWithoutBookingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBookingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBookingsInput, Prisma.UserUncheckedUpdateWithoutBookingsInput>
+}
+
+export type UserUpdateWithoutBookingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBookingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -818,9 +1128,13 @@ export type UserCreateWithoutCommentsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -840,9 +1154,13 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamUncheckedCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -878,9 +1196,13 @@ export type UserUpdateWithoutCommentsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -900,9 +1222,13 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUncheckedUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOrganizationsInput = {
@@ -922,9 +1248,13 @@ export type UserCreateWithoutOrganizationsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrganizationsInput = {
@@ -944,9 +1274,13 @@ export type UserUncheckedCreateWithoutOrganizationsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  teams?: Prisma.TeamUncheckedCreateNestedManyWithoutMembersInput
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrganizationsInput = {
@@ -982,9 +1316,13 @@ export type UserUpdateWithoutOrganizationsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizationsInput = {
@@ -1004,12 +1342,256 @@ export type UserUncheckedUpdateWithoutOrganizationsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  teams?: Prisma.TeamUncheckedUpdateManyWithoutMembersNestedInput
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutTeamsInput = {
+export type UserCreateWithoutAssignedTasksInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAssignedTasksInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAssignedTasksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssignedTasksInput, Prisma.UserUncheckedCreateWithoutAssignedTasksInput>
+}
+
+export type UserCreateWithoutReportedTasksInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutReportedTasksInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  emailVerified?: boolean
+  imageUrl?: string
+  imagePublicId?: string
+  role?: $Enums.Role
+  status?: $Enums.UserStatus
+  needPasswordChange?: boolean
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
+  organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutReportedTasksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportedTasksInput, Prisma.UserUncheckedCreateWithoutReportedTasksInput>
+}
+
+export type UserUpsertWithoutAssignedTasksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAssignedTasksInput, Prisma.UserUncheckedUpdateWithoutAssignedTasksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAssignedTasksInput, Prisma.UserUncheckedCreateWithoutAssignedTasksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAssignedTasksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAssignedTasksInput, Prisma.UserUncheckedUpdateWithoutAssignedTasksInput>
+}
+
+export type UserUpdateWithoutAssignedTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAssignedTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutReportedTasksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReportedTasksInput, Prisma.UserUncheckedUpdateWithoutReportedTasksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReportedTasksInput, Prisma.UserUncheckedCreateWithoutReportedTasksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReportedTasksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReportedTasksInput, Prisma.UserUncheckedUpdateWithoutReportedTasksInput>
+}
+
+export type UserUpdateWithoutReportedTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReportedTasksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  teamMemberships?: Prisma.TeamMemberUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
+  organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutTeamMembershipsInput = {
   id?: string
   name: string
   email: string
@@ -1029,9 +1611,13 @@ export type UserCreateWithoutTeamsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutTeamsInput = {
+export type UserUncheckedCreateWithoutTeamMembershipsInput = {
   id?: string
   name: string
   email: string
@@ -1051,52 +1637,29 @@ export type UserUncheckedCreateWithoutTeamsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutUserInput
   organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
+  assignedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutAssigneeInput
+  reportedTasks?: Prisma.TaskUncheckedCreateNestedManyWithoutReporterInput
+  attachments?: Prisma.AttachmentUncheckedCreateNestedManyWithoutUploadedByInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutTeamsInput = {
+export type UserCreateOrConnectWithoutTeamMembershipsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutTeamsInput, Prisma.UserUncheckedCreateWithoutTeamsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTeamMembershipsInput, Prisma.UserUncheckedCreateWithoutTeamMembershipsInput>
 }
 
-export type UserUpsertWithWhereUniqueWithoutTeamsInput = {
-  where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutTeamsInput, Prisma.UserUncheckedUpdateWithoutTeamsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutTeamsInput, Prisma.UserUncheckedCreateWithoutTeamsInput>
+export type UserUpsertWithoutTeamMembershipsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTeamMembershipsInput, Prisma.UserUncheckedUpdateWithoutTeamMembershipsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTeamMembershipsInput, Prisma.UserUncheckedCreateWithoutTeamMembershipsInput>
+  where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateWithWhereUniqueWithoutTeamsInput = {
-  where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutTeamsInput, Prisma.UserUncheckedUpdateWithoutTeamsInput>
+export type UserUpdateToOneWithWhereWithoutTeamMembershipsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTeamMembershipsInput, Prisma.UserUncheckedUpdateWithoutTeamMembershipsInput>
 }
 
-export type UserUpdateManyWithWhereWithoutTeamsInput = {
-  where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutTeamsInput>
-}
-
-export type UserScalarWhereInput = {
-  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
-  OR?: Prisma.UserScalarWhereInput[]
-  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
-  id?: Prisma.StringFilter<"User"> | string
-  name?: Prisma.StringFilter<"User"> | string
-  email?: Prisma.StringFilter<"User"> | string
-  password?: Prisma.StringNullableFilter<"User"> | string | null
-  googleId?: Prisma.StringNullableFilter<"User"> | string | null
-  authProvider?: Prisma.EnumAuthProviderFilter<"User"> | $Enums.AuthProvider
-  emailVerified?: Prisma.BoolFilter<"User"> | boolean
-  imageUrl?: Prisma.StringFilter<"User"> | string
-  imagePublicId?: Prisma.StringFilter<"User"> | string
-  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
-  status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
-  needPasswordChange?: Prisma.BoolFilter<"User"> | boolean
-  isDeleted?: Prisma.BoolFilter<"User"> | boolean
-  deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-}
-
-export type UserUpdateWithoutTeamsInput = {
+export type UserUpdateWithoutTeamMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1116,9 +1679,13 @@ export type UserUpdateWithoutTeamsInput = {
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
+  assignedTasks?: Prisma.TaskUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutTeamsInput = {
+export type UserUncheckedUpdateWithoutTeamMembershipsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1138,25 +1705,10 @@ export type UserUncheckedUpdateWithoutTeamsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutUserNestedInput
   organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
-}
-
-export type UserUncheckedUpdateManyWithoutTeamsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
-  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
-  imagePublicId?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-  needPasswordChange?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedTasks?: Prisma.TaskUncheckedUpdateManyWithoutAssigneeNestedInput
+  reportedTasks?: Prisma.TaskUncheckedUpdateManyWithoutReporterNestedInput
+  attachments?: Prisma.AttachmentUncheckedUpdateManyWithoutUploadedByNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1165,17 +1717,25 @@ export type UserUncheckedUpdateManyWithoutTeamsInput = {
  */
 
 export type UserCountOutputType = {
-  teams: number
+  teamMemberships: number
   comments: number
   activities: number
   organizations: number
+  assignedTasks: number
+  reportedTasks: number
+  attachments: number
+  bookings: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  teams?: boolean | UserCountOutputTypeCountTeamsArgs
+  teamMemberships?: boolean | UserCountOutputTypeCountTeamMembershipsArgs
   comments?: boolean | UserCountOutputTypeCountCommentsArgs
   activities?: boolean | UserCountOutputTypeCountActivitiesArgs
   organizations?: boolean | UserCountOutputTypeCountOrganizationsArgs
+  assignedTasks?: boolean | UserCountOutputTypeCountAssignedTasksArgs
+  reportedTasks?: boolean | UserCountOutputTypeCountReportedTasksArgs
+  attachments?: boolean | UserCountOutputTypeCountAttachmentsArgs
+  bookings?: boolean | UserCountOutputTypeCountBookingsArgs
 }
 
 /**
@@ -1191,8 +1751,8 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountTeamsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TeamWhereInput
+export type UserCountOutputTypeCountTeamMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TeamMemberWhereInput
 }
 
 /**
@@ -1216,6 +1776,34 @@ export type UserCountOutputTypeCountOrganizationsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.OrganizationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAssignedTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaskWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReportedTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TaskWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAttachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AttachmentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookingWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1234,10 +1822,14 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  teams?: boolean | Prisma.User$teamsArgs<ExtArgs>
+  teamMemberships?: boolean | Prisma.User$teamMembershipsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
   organizations?: boolean | Prisma.User$organizationsArgs<ExtArgs>
+  assignedTasks?: boolean | Prisma.User$assignedTasksArgs<ExtArgs>
+  reportedTasks?: boolean | Prisma.User$reportedTasksArgs<ExtArgs>
+  attachments?: boolean | Prisma.User$attachmentsArgs<ExtArgs>
+  bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1300,10 +1892,14 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "googleId" | "authProvider" | "emailVerified" | "imageUrl" | "imagePublicId" | "role" | "status" | "needPasswordChange" | "isDeleted" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  teams?: boolean | Prisma.User$teamsArgs<ExtArgs>
+  teamMemberships?: boolean | Prisma.User$teamMembershipsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   activities?: boolean | Prisma.User$activitiesArgs<ExtArgs>
   organizations?: boolean | Prisma.User$organizationsArgs<ExtArgs>
+  assignedTasks?: boolean | Prisma.User$assignedTasksArgs<ExtArgs>
+  reportedTasks?: boolean | Prisma.User$reportedTasksArgs<ExtArgs>
+  attachments?: boolean | Prisma.User$attachmentsArgs<ExtArgs>
+  bookings?: boolean | Prisma.User$bookingsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1312,10 +1908,14 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    teams: Prisma.$TeamPayload<ExtArgs>[]
+    teamMemberships: Prisma.$TeamMemberPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
     activities: Prisma.$ActivityPayload<ExtArgs>[]
     organizations: Prisma.$OrganizationPayload<ExtArgs>[]
+    assignedTasks: Prisma.$TaskPayload<ExtArgs>[]
+    reportedTasks: Prisma.$TaskPayload<ExtArgs>[]
+    attachments: Prisma.$AttachmentPayload<ExtArgs>[]
+    bookings: Prisma.$BookingPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1728,10 +2328,14 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  teams<T extends Prisma.User$teamsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$teamsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  teamMemberships<T extends Prisma.User$teamMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$teamMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TeamMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activities<T extends Prisma.User$activitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$activitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   organizations<T extends Prisma.User$organizationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$organizationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  assignedTasks<T extends Prisma.User$assignedTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$assignedTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reportedTasks<T extends Prisma.User$reportedTasksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportedTasksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  attachments<T extends Prisma.User$attachmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bookings<T extends Prisma.User$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2170,27 +2774,27 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.teams
+ * User.teamMemberships
  */
-export type User$teamsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$teamMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Team
+   * Select specific fields to fetch from the TeamMember
    */
-  select?: Prisma.TeamSelect<ExtArgs> | null
+  select?: Prisma.TeamMemberSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Team
+   * Omit specific fields from the TeamMember
    */
-  omit?: Prisma.TeamOmit<ExtArgs> | null
+  omit?: Prisma.TeamMemberOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TeamInclude<ExtArgs> | null
-  where?: Prisma.TeamWhereInput
-  orderBy?: Prisma.TeamOrderByWithRelationInput | Prisma.TeamOrderByWithRelationInput[]
-  cursor?: Prisma.TeamWhereUniqueInput
+  include?: Prisma.TeamMemberInclude<ExtArgs> | null
+  where?: Prisma.TeamMemberWhereInput
+  orderBy?: Prisma.TeamMemberOrderByWithRelationInput | Prisma.TeamMemberOrderByWithRelationInput[]
+  cursor?: Prisma.TeamMemberWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TeamScalarFieldEnum | Prisma.TeamScalarFieldEnum[]
+  distinct?: Prisma.TeamMemberScalarFieldEnum | Prisma.TeamMemberScalarFieldEnum[]
 }
 
 /**
@@ -2263,6 +2867,102 @@ export type User$organizationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[]
+}
+
+/**
+ * User.assignedTasks
+ */
+export type User$assignedTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Task
+   */
+  select?: Prisma.TaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Task
+   */
+  omit?: Prisma.TaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TaskInclude<ExtArgs> | null
+  where?: Prisma.TaskWhereInput
+  orderBy?: Prisma.TaskOrderByWithRelationInput | Prisma.TaskOrderByWithRelationInput[]
+  cursor?: Prisma.TaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TaskScalarFieldEnum | Prisma.TaskScalarFieldEnum[]
+}
+
+/**
+ * User.reportedTasks
+ */
+export type User$reportedTasksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Task
+   */
+  select?: Prisma.TaskSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Task
+   */
+  omit?: Prisma.TaskOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TaskInclude<ExtArgs> | null
+  where?: Prisma.TaskWhereInput
+  orderBy?: Prisma.TaskOrderByWithRelationInput | Prisma.TaskOrderByWithRelationInput[]
+  cursor?: Prisma.TaskWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TaskScalarFieldEnum | Prisma.TaskScalarFieldEnum[]
+}
+
+/**
+ * User.attachments
+ */
+export type User$attachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Attachment
+   */
+  select?: Prisma.AttachmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Attachment
+   */
+  omit?: Prisma.AttachmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttachmentInclude<ExtArgs> | null
+  where?: Prisma.AttachmentWhereInput
+  orderBy?: Prisma.AttachmentOrderByWithRelationInput | Prisma.AttachmentOrderByWithRelationInput[]
+  cursor?: Prisma.AttachmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AttachmentScalarFieldEnum | Prisma.AttachmentScalarFieldEnum[]
+}
+
+/**
+ * User.bookings
+ */
+export type User$bookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Booking
+   */
+  select?: Prisma.BookingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Booking
+   */
+  omit?: Prisma.BookingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookingInclude<ExtArgs> | null
+  where?: Prisma.BookingWhereInput
+  orderBy?: Prisma.BookingOrderByWithRelationInput | Prisma.BookingOrderByWithRelationInput[]
+  cursor?: Prisma.BookingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookingScalarFieldEnum | Prisma.BookingScalarFieldEnum[]
 }
 
 /**

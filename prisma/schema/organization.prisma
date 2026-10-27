@@ -1,8 +1,11 @@
 model Organization {
-  id       String    @id @default(uuid())
-  name     String
-  ownerId  String
-  owner    User      @relation(fields: [ownerId], references: [id])
-  teams    Team[]
-  projects Project[]
+  id          String    @id @default(uuid())
+  name        String
+  description String?
+  ownerId     String
+  owner       User      @relation(fields: [ownerId], references: [id])
+  teams       Team[]
+  projects    Project[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }

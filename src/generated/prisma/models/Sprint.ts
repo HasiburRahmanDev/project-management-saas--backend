@@ -27,19 +27,34 @@ export type AggregateSprint = {
 export type SprintMinAggregateOutputType = {
   id: string | null
   name: string | null
+  goal: string | null
+  startDate: Date | null
+  endDate: Date | null
   projectId: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type SprintMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  goal: string | null
+  startDate: Date | null
+  endDate: Date | null
   projectId: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type SprintCountAggregateOutputType = {
   id: number
   name: number
+  goal: number
+  startDate: number
+  endDate: number
   projectId: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -47,19 +62,34 @@ export type SprintCountAggregateOutputType = {
 export type SprintMinAggregateInputType = {
   id?: true
   name?: true
+  goal?: true
+  startDate?: true
+  endDate?: true
   projectId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type SprintMaxAggregateInputType = {
   id?: true
   name?: true
+  goal?: true
+  startDate?: true
+  endDate?: true
   projectId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type SprintCountAggregateInputType = {
   id?: true
   name?: true
+  goal?: true
+  startDate?: true
+  endDate?: true
   projectId?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -138,7 +168,12 @@ export type SprintGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type SprintGroupByOutputType = {
   id: string
   name: string
+  goal: string | null
+  startDate: Date | null
+  endDate: Date | null
   projectId: string
+  createdAt: Date
+  updatedAt: Date
   _count: SprintCountAggregateOutputType | null
   _min: SprintMinAggregateOutputType | null
   _max: SprintMaxAggregateOutputType | null
@@ -165,7 +200,12 @@ export type SprintWhereInput = {
   NOT?: Prisma.SprintWhereInput | Prisma.SprintWhereInput[]
   id?: Prisma.StringFilter<"Sprint"> | string
   name?: Prisma.StringFilter<"Sprint"> | string
+  goal?: Prisma.StringNullableFilter<"Sprint"> | string | null
+  startDate?: Prisma.DateTimeNullableFilter<"Sprint"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableFilter<"Sprint"> | Date | string | null
   projectId?: Prisma.StringFilter<"Sprint"> | string
+  createdAt?: Prisma.DateTimeFilter<"Sprint"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Sprint"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   tasks?: Prisma.TaskListRelationFilter
 }
@@ -173,7 +213,12 @@ export type SprintWhereInput = {
 export type SprintOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  goal?: Prisma.SortOrderInput | Prisma.SortOrder
+  startDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   project?: Prisma.ProjectOrderByWithRelationInput
   tasks?: Prisma.TaskOrderByRelationAggregateInput
 }
@@ -184,7 +229,12 @@ export type SprintWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SprintWhereInput[]
   NOT?: Prisma.SprintWhereInput | Prisma.SprintWhereInput[]
   name?: Prisma.StringFilter<"Sprint"> | string
+  goal?: Prisma.StringNullableFilter<"Sprint"> | string | null
+  startDate?: Prisma.DateTimeNullableFilter<"Sprint"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableFilter<"Sprint"> | Date | string | null
   projectId?: Prisma.StringFilter<"Sprint"> | string
+  createdAt?: Prisma.DateTimeFilter<"Sprint"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Sprint"> | Date | string
   project?: Prisma.XOR<Prisma.ProjectScalarRelationFilter, Prisma.ProjectWhereInput>
   tasks?: Prisma.TaskListRelationFilter
 }, "id">
@@ -192,7 +242,12 @@ export type SprintWhereUniqueInput = Prisma.AtLeast<{
 export type SprintOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  goal?: Prisma.SortOrderInput | Prisma.SortOrder
+  startDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.SprintCountOrderByAggregateInput
   _max?: Prisma.SprintMaxOrderByAggregateInput
   _min?: Prisma.SprintMinOrderByAggregateInput
@@ -204,12 +259,22 @@ export type SprintScalarWhereWithAggregatesInput = {
   NOT?: Prisma.SprintScalarWhereWithAggregatesInput | Prisma.SprintScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Sprint"> | string
   name?: Prisma.StringWithAggregatesFilter<"Sprint"> | string
+  goal?: Prisma.StringNullableWithAggregatesFilter<"Sprint"> | string | null
+  startDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Sprint"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Sprint"> | Date | string | null
   projectId?: Prisma.StringWithAggregatesFilter<"Sprint"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Sprint"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Sprint"> | Date | string
 }
 
 export type SprintCreateInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   project: Prisma.ProjectCreateNestedOneWithoutSprintsInput
   tasks?: Prisma.TaskCreateNestedManyWithoutSprintInput
 }
@@ -217,13 +282,23 @@ export type SprintCreateInput = {
 export type SprintUncheckedCreateInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
   projectId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutSprintInput
 }
 
 export type SprintUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneRequiredWithoutSprintsNestedInput
   tasks?: Prisma.TaskUpdateManyWithoutSprintNestedInput
 }
@@ -231,25 +306,45 @@ export type SprintUpdateInput = {
 export type SprintUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tasks?: Prisma.TaskUncheckedUpdateManyWithoutSprintNestedInput
 }
 
 export type SprintCreateManyInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
   projectId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type SprintUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SprintUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SprintListRelationFilter = {
@@ -265,19 +360,34 @@ export type SprintOrderByRelationAggregateInput = {
 export type SprintCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  goal?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type SprintMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  goal?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type SprintMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  goal?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type SprintNullableScalarRelationFilter = {
@@ -327,6 +437,10 @@ export type SprintUncheckedUpdateManyWithoutProjectNestedInput = {
   deleteMany?: Prisma.SprintScalarWhereInput | Prisma.SprintScalarWhereInput[]
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type SprintCreateNestedOneWithoutTasksInput = {
   create?: Prisma.XOR<Prisma.SprintCreateWithoutTasksInput, Prisma.SprintUncheckedCreateWithoutTasksInput>
   connectOrCreate?: Prisma.SprintCreateOrConnectWithoutTasksInput
@@ -346,12 +460,22 @@ export type SprintUpdateOneWithoutTasksNestedInput = {
 export type SprintCreateWithoutProjectInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tasks?: Prisma.TaskCreateNestedManyWithoutSprintInput
 }
 
 export type SprintUncheckedCreateWithoutProjectInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutSprintInput
 }
 
@@ -387,19 +511,34 @@ export type SprintScalarWhereInput = {
   NOT?: Prisma.SprintScalarWhereInput | Prisma.SprintScalarWhereInput[]
   id?: Prisma.StringFilter<"Sprint"> | string
   name?: Prisma.StringFilter<"Sprint"> | string
+  goal?: Prisma.StringNullableFilter<"Sprint"> | string | null
+  startDate?: Prisma.DateTimeNullableFilter<"Sprint"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableFilter<"Sprint"> | Date | string | null
   projectId?: Prisma.StringFilter<"Sprint"> | string
+  createdAt?: Prisma.DateTimeFilter<"Sprint"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Sprint"> | Date | string
 }
 
 export type SprintCreateWithoutTasksInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   project: Prisma.ProjectCreateNestedOneWithoutSprintsInput
 }
 
 export type SprintUncheckedCreateWithoutTasksInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
   projectId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type SprintCreateOrConnectWithoutTasksInput = {
@@ -421,35 +560,65 @@ export type SprintUpdateToOneWithWhereWithoutTasksInput = {
 export type SprintUpdateWithoutTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   project?: Prisma.ProjectUpdateOneRequiredWithoutSprintsNestedInput
 }
 
 export type SprintUncheckedUpdateWithoutTasksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SprintCreateManyProjectInput = {
   id?: string
   name: string
+  goal?: string | null
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type SprintUpdateWithoutProjectInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tasks?: Prisma.TaskUpdateManyWithoutSprintNestedInput
 }
 
 export type SprintUncheckedUpdateWithoutProjectInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tasks?: Prisma.TaskUncheckedUpdateManyWithoutSprintNestedInput
 }
 
 export type SprintUncheckedUpdateManyWithoutProjectInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -486,7 +655,12 @@ export type SprintCountOutputTypeCountTasksArgs<ExtArgs extends runtime.Types.Ex
 export type SprintSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  goal?: boolean
+  startDate?: boolean
+  endDate?: boolean
   projectId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   tasks?: boolean | Prisma.Sprint$tasksArgs<ExtArgs>
   _count?: boolean | Prisma.SprintCountOutputTypeDefaultArgs<ExtArgs>
@@ -495,24 +669,39 @@ export type SprintSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type SprintSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  goal?: boolean
+  startDate?: boolean
+  endDate?: boolean
   projectId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sprint"]>
 
 export type SprintSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  goal?: boolean
+  startDate?: boolean
+  endDate?: boolean
   projectId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sprint"]>
 
 export type SprintSelectScalar = {
   id?: boolean
   name?: boolean
+  goal?: boolean
+  startDate?: boolean
+  endDate?: boolean
   projectId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type SprintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "projectId", ExtArgs["result"]["sprint"]>
+export type SprintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "goal" | "startDate" | "endDate" | "projectId" | "createdAt" | "updatedAt", ExtArgs["result"]["sprint"]>
 export type SprintInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
   tasks?: boolean | Prisma.Sprint$tasksArgs<ExtArgs>
@@ -534,7 +723,12 @@ export type $SprintPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    goal: string | null
+    startDate: Date | null
+    endDate: Date | null
     projectId: string
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["sprint"]>
   composites: {}
 }
@@ -962,7 +1156,12 @@ export interface Prisma__SprintClient<T, Null = never, ExtArgs extends runtime.T
 export interface SprintFieldRefs {
   readonly id: Prisma.FieldRef<"Sprint", 'String'>
   readonly name: Prisma.FieldRef<"Sprint", 'String'>
+  readonly goal: Prisma.FieldRef<"Sprint", 'String'>
+  readonly startDate: Prisma.FieldRef<"Sprint", 'DateTime'>
+  readonly endDate: Prisma.FieldRef<"Sprint", 'DateTime'>
   readonly projectId: Prisma.FieldRef<"Sprint", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Sprint", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Sprint", 'DateTime'>
 }
     
 

@@ -1,6 +1,8 @@
 model Booking {
     id String @id @default(uuid())
     status BookingStatus @default(PENDING)
+    userId String?
+    user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 

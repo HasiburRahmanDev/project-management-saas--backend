@@ -1,0 +1,10 @@
+model Project {
+  id             String        @id @default(uuid())
+  name           String
+  teamId         String
+  team           Team          @relation(fields: [teamId], references: [id])
+  sprints        Sprint[]
+  tasks          Task[]
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+}

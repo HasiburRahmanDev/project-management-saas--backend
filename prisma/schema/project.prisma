@@ -1,10 +1,13 @@
 model Project {
   id             String        @id @default(uuid())
   name           String
+  description    String?
   teamId         String
-  team           Team          @relation(fields: [teamId], references: [id])
+  team           Team          @relation(fields: [teamId], references: [id], onDelete: Cascade)
   sprints        Sprint[]
   tasks          Task[]
-  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   organizationId String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 }

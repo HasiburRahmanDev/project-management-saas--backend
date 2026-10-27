@@ -1,0 +1,10 @@
+model Booking {
+    id String @id @default(uuid())
+    status BookingStatus @default(PENDING)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    payment Payment?
+
+    @@map("bookings")
+}

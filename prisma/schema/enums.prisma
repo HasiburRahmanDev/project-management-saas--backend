@@ -53,3 +53,8 @@ enum PaymentStatus {
   CANCELLED
   REFUNDED
 }
+
+enum TeamRole {
+  LEAD
+  MEMBER
+}

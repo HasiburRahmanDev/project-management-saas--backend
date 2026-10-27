@@ -1,0 +1,8 @@
+model Activity {
+  id     String  @id @default(uuid())
+  action String
+  taskId String?
+  task   Task?   @relation(fields: [taskId], references: [id])
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+}

@@ -61,6 +61,7 @@ export const ModelName = {
   Sprint: 'Sprint',
   Task: 'Task',
   Team: 'Team',
+  TeamMember: 'TeamMember',
   User: 'User'
 } as const
 
@@ -84,7 +85,8 @@ export const ActivityScalarFieldEnum = {
   id: 'id',
   action: 'action',
   taskId: 'taskId',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt'
 } as const
 
 export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
@@ -93,7 +95,11 @@ export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typ
 export const AttachmentScalarFieldEnum = {
   id: 'id',
   url: 'url',
-  taskId: 'taskId'
+  publicId: 'publicId',
+  fileName: 'fileName',
+  taskId: 'taskId',
+  uploadedById: 'uploadedById',
+  createdAt: 'createdAt'
 } as const
 
 export type AttachmentScalarFieldEnum = (typeof AttachmentScalarFieldEnum)[keyof typeof AttachmentScalarFieldEnum]
@@ -102,6 +108,7 @@ export type AttachmentScalarFieldEnum = (typeof AttachmentScalarFieldEnum)[keyof
 export const BookingScalarFieldEnum = {
   id: 'id',
   status: 'status',
+  userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -113,7 +120,9 @@ export const CommentScalarFieldEnum = {
   id: 'id',
   content: 'content',
   taskId: 'taskId',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
@@ -122,7 +131,10 @@ export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeo
 export const OrganizationScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  ownerId: 'ownerId'
+  description: 'description',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
@@ -155,8 +167,11 @@ export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeo
 export const ProjectScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
   teamId: 'teamId',
-  organizationId: 'organizationId'
+  organizationId: 'organizationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
@@ -165,7 +180,12 @@ export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeo
 export const SprintScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  projectId: 'projectId'
+  goal: 'goal',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type SprintScalarFieldEnum = (typeof SprintScalarFieldEnum)[keyof typeof SprintScalarFieldEnum]
@@ -178,7 +198,12 @@ export const TaskScalarFieldEnum = {
   sprintId: 'sprintId',
   projectId: 'projectId',
   status: 'status',
-  priority: 'priority'
+  priority: 'priority',
+  dueDate: 'dueDate',
+  assigneeId: 'assigneeId',
+  reporterId: 'reporterId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
@@ -187,10 +212,23 @@ export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof Task
 export const TeamScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  organizationId: 'organizationId'
+  organizationId: 'organizationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type TeamScalarFieldEnum = (typeof TeamScalarFieldEnum)[keyof typeof TeamScalarFieldEnum]
+
+
+export const TeamMemberScalarFieldEnum = {
+  id: 'id',
+  role: 'role',
+  teamId: 'teamId',
+  userId: 'userId',
+  joinedAt: 'joinedAt'
+} as const
+
+export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof typeof TeamMemberScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {

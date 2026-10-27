@@ -2,7 +2,22 @@ model Team {
   id             String       @id @default(uuid())
   name           String
   organizationId String
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  members        User[]       @relation("TeamMembers")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  members        TeamMember[]
   projects       Project[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model TeamMember {
+  id       String   @id @default(uuid())
+  role     TeamRole @default(MEMBER)
+  teamId   String
+  team     Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  joinedAt DateTime @default(now())
+
+  @@unique([teamId, userId])
+  @@map("team_members")
 }

@@ -1,6 +1,5 @@
 import app from "./app";
 import config from "./app/config";
-import { transporter } from "./app/lib/nodemailer";
 import { prisma } from "./app/lib/prisma";
 import { redisClient } from "./app/lib/redis";
 import { seedOwner, seedTesterAdmin } from "./app/utils/seeds";
@@ -11,11 +10,17 @@ const main = async () => {
   try {
     await prisma.$connect();
     console.log("Connected to the database successfully.");
-    redisClient.connect();
-    console.log("redis connected successfully");
+    try {
+      await redisClient.connect();
+      console.log("redis connected successfully");
+    } catch (error) {
+      // redis is only needed for bkash tokens and password-reset OTPs
+      console.log(
+        "Redis connection failed, continuing without it:",
+        (error as Error).message,
+      );
+    }
 
-    // await transporter.verify();
-    console.log("Nodemailer connection successfully");
     await seedOwner();
     await seedTesterAdmin();
 

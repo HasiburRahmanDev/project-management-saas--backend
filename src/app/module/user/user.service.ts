@@ -1,6 +1,6 @@
-import { tr } from "zod/locales";
 import { cloudinary } from "../../lib/cloudinary";
 import { prisma } from "../../lib/prisma";
+import { uploadBufferToCloudinary } from "../../utils/uploadToCloudinary";
 
 const uploadProfileImage = async (buffer: Buffer, userId: string) => {
   const currentUser = await prisma.user.findUnique({
@@ -12,41 +12,27 @@ const uploadProfileImage = async (buffer: Buffer, userId: string) => {
       imageUrl: true,
     },
   });
-  cloudinary.uploader
-    .upload_stream(
-      {
-        resource_type: "auto",
-      },
-      async (error, result) => {
-        if (error) {
-          console.log(error);
-        }
 
-        console.log("result", result);
+  const result = await uploadBufferToCloudinary(buffer, "profile-images");
 
-        const user = await prisma.user.update({
-          where: {
-            id: userId,
-          },
-          data: {
-            imageUrl: result?.secure_url,
-            imagePublicId: result?.public_id,
-          },
-        });
-      },
-    )
-    .end(buffer);
-
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.update({
     where: {
       id: userId,
+    },
+    data: {
+      imageUrl: result.secure_url,
+      imagePublicId: result.public_id,
     },
     omit: {
       password: true,
     },
   });
-  if (currentUser?.imagePublicId && currentUser.imageUrl) {
-    cloudinary.uploader.destroy(currentUser.imagePublicId);
+
+  // remove the previous image only after the new one is saved
+  if (currentUser?.imagePublicId) {
+    cloudinary.uploader
+      .destroy(currentUser.imagePublicId)
+      .catch((error) => console.log("Failed to delete old image", error));
   }
   return user;
 };

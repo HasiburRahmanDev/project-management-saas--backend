@@ -85,3 +85,11 @@ export const PaymentStatus = {
 } as const
 
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+
+
+export const TeamRole = {
+  LEAD: 'LEAD',
+  MEMBER: 'MEMBER'
+} as const
+
+export type TeamRole = (typeof TeamRole)[keyof typeof TeamRole]

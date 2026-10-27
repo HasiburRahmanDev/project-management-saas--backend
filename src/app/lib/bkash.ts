@@ -39,7 +39,10 @@ export const getBkashIdToken = async () => {
         },
       );
       if (!refreshTokenResponse.ok) {
-        throw new Error("Bkash access Token grant failed");
+        const errorBody = await refreshTokenResponse.text();
+        throw new Error(
+          `Bkash token refresh failed (${refreshTokenResponse.status}): ${errorBody || "empty response"}`,
+        );
       }
       const bkashRefreshTokenResult = await refreshTokenResponse.json();
 
@@ -75,7 +78,10 @@ export const getBkashIdToken = async () => {
       },
     );
     if (!response.ok) {
-      throw new Error("Bkash access Token grant failed");
+      const errorBody = await response.text();
+      throw new Error(
+        `Bkash access token grant failed (${response.status}): ${errorBody || "empty response"}`,
+      );
     }
     const result = await response.json();
     // bkash idtoken set
@@ -94,7 +100,7 @@ export const getBkashIdToken = async () => {
     });
     bkashIdToken = result.id_token;
     return bkashIdToken;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error: unknown) {
+    throw error instanceof Error ? error : new Error(String(error));
   }
 };
